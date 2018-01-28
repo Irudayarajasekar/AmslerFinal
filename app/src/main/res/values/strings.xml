@@ -1,4 +1,14 @@
 <resources>
     <string name="app_name">AmslerFinal</string>
     <string name="action_settings">Settings</string>
+    <string name="maintext">How to do the Amsler Grid Test</string>
+    <string name="ok">OK, GOT IT</string>
+    <string-array name="instructions">
+        <item>Testing your eyes with an Amsler grid is easy and takes only a few minutes. Here are the basic steps</item>
+        <item>Test your eyes under normal room lighting used for reading</item>
+        <item>Wear eyeglasses you normally wear for reading (even if you wear only store-bought reading glasses)</item>
+        <item>Hold the Amsler grid chart approximately 14 to 16 inches (i.e. 35 to 40 centimeters) from your eyes</item>
+        <item>Test each eye separately: Cup your hand over one eye while testing the other eye</item>
+        <item>During the test, answer the questions asked by marking on the chart</item>
+    </string-array>
 </resources>
