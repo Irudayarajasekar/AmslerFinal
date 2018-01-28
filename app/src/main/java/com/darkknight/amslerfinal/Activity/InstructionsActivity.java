@@ -1,4 +1,4 @@
-package com.darkknight.amslerfinal;
+package com.darkknight.amslerfinal.Activity;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.darkknight.amslerfinal.R;
 
 import me.relex.circleindicator.CircleIndicator;
 
@@ -30,7 +32,7 @@ public class InstructionsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.instructionviewpager);
+        setContentView(R.layout.activity_instructions);
         inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         vp=(ViewPager)findViewById(R.id.pager);
         gotit =(Button)findViewById(R.id.gotit);
