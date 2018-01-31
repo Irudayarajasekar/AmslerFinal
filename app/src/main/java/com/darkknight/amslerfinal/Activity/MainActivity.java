@@ -1,6 +1,7 @@
 package com.darkknight.amslerfinal.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -13,12 +14,16 @@ import java.util.Locale;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
     CardView cardView1,cardView2,cardView3;
+    public static final String MyPREFERENCES = "AppPreferences" ;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         initialiseUI();
+
     }
 
     private void initialiseUI() {
@@ -32,6 +37,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private void setLanguage(String language)
     {
+        sharedPreferences = getSharedPreferences(MyPREFERENCES,MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+        editor.putString("Language",language);
+        editor.commit();
         Locale locale = new Locale(language);
         Locale.setDefault(locale);
         Configuration config = new Configuration();

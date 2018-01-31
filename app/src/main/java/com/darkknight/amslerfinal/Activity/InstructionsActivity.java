@@ -1,6 +1,7 @@
 package com.darkknight.amslerfinal.Activity;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
@@ -37,6 +38,13 @@ public class InstructionsActivity extends AppCompatActivity {
         vp=(ViewPager)findViewById(R.id.pager);
         gotit =(Button)findViewById(R.id.gotit);
         gotit.setVisibility(View.INVISIBLE);
+        gotit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(InstructionsActivity.this,InitialActivity.class);
+                startActivity(intent);
+            }
+        });
         CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
         instructions=getResources().getStringArray(R.array.instructions);
         vp.setAdapter(new MyPagesAdapter());

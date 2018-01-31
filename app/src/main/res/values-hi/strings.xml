@@ -3,6 +3,10 @@
     <string name="action_settings">Settings</string>
     <string name="maintext">एम्सलेर ग्रिड टेस्ट कैसे करें</string>
     <string name="ok">ठीक</string>
+    <string name="homeamsler">घर एम्सलेर चार्ट</string>
+    <string name="clinicamsler">नैदानिक एम्सलेर चार्ट</string>
+    <string name="instruct">अनुदेश</string>
+    <string name="lang">भाषा</string>
     <string-array name="instructions">
         <item>एम्सलर ग्रिड के साथ अपनी आंखों का परीक्षण करना आसान है और केवल कुछ मिनट लगते हैं। यहां बुनियादी कदम हैं</item>
         <item>पढ़ने के लिए इस्तेमाल सामान्य कमरे प्रकाश के तहत अपनी आँखों का परीक्षण करें</item>
