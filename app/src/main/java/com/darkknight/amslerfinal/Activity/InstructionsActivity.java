@@ -41,8 +41,12 @@ public class InstructionsActivity extends AppCompatActivity {
         gotit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(InstructionsActivity.this,InitialActivity.class);
-                startActivity(intent);
+                if(getIntent().getBooleanExtra("finishScreen",false))
+                    finish();
+                else {
+                    Intent intent = new Intent(InstructionsActivity.this, InitialActivity.class);
+                    startActivity(intent);
+                }
             }
         });
         CircleIndicator indicator = (CircleIndicator) findViewById(R.id.indicator);
