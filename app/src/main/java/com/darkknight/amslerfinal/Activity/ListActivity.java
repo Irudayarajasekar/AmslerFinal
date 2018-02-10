@@ -8,6 +8,7 @@ import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.TextView;
 
 import com.darkknight.amslerfinal.R;
 
@@ -15,6 +16,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 import Utils.ListAdapter;
+import Utils.ListDetails;
 import Utils.RecyclerItemClickListener;
 
 /**
@@ -24,17 +26,30 @@ import Utils.RecyclerItemClickListener;
 public class ListActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ListAdapter listAdapter;
-    ArrayList<String> chartList;
+    ArrayList<ListDetails> chartList;
+    ListDetails listDetails;
     DividerItemDecoration dividerItemDecoration;
     Intent intent;
+    TextView title;
+    int[] imageArray = {R.drawable.instructions,R.drawable.instructions,R.drawable.instructions,
+            R.drawable.instructions,R.drawable.instructions,R.drawable.instructions,R.drawable.instructions};
+    String[] nameArray;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list);
-        chartList= new ArrayList<String>
-                (Arrays.asList(getResources().getStringArray(getIntent().getIntExtra("testname",R.array.homelist))));
+        title = (TextView)findViewById(R.id.title);
+        title.setText(getIntent().getIntExtra("title",R.string.homeamsler));
         recyclerView = (RecyclerView)findViewById(R.id.recycler);
+        chartList = new ArrayList<>();
+        nameArray = getResources().getStringArray(getIntent().getIntExtra("testname",R.array.homelist));
+        for (int i=0;i<nameArray.length;i++){
+            listDetails = new ListDetails();
+            listDetails.setName(nameArray[i]);
+            listDetails.setImage(imageArray[i]);
+            chartList.add(listDetails);
+        }
         listAdapter = new ListAdapter(this);
         dividerItemDecoration = new DividerItemDecoration(getApplicationContext(),DividerItemDecoration.VERTICAL);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

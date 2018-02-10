@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.darkknight.amslerfinal.R;
@@ -17,14 +18,14 @@ import java.util.List;
  */
 
 public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolderboxOffice>{
-    private List<String> chartList = new ArrayList<>();
+    private List<ListDetails> chartList = new ArrayList<>();
     private LayoutInflater layoutInflater;
 
     public ListAdapter(Context context){
         layoutInflater = LayoutInflater.from(context);
     }
 
-    public void setChartList(ArrayList<String> chartList){
+    public void setChartList(ArrayList<ListDetails> chartList){
         this.chartList = chartList;
         notifyItemRangeChanged(0,chartList.size()-1);
     }
@@ -36,7 +37,8 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolderboxO
 
     @Override
     public void onBindViewHolder(ViewHolderboxOffice holder, int position) {
-        holder.name.setText(chartList.get(position));
+        holder.name.setText(chartList.get(position).getName());
+        holder.imageView.setImageResource(chartList.get(position).getImage());
     }
 
     @Override
@@ -51,10 +53,12 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolderboxO
     public static class ViewHolderboxOffice extends RecyclerView.ViewHolder{
 
         private TextView name;
+        private ImageView imageView;
 
         public ViewHolderboxOffice(View itemView) {
             super(itemView);
             name = (TextView) itemView.findViewById(R.id.chartname);
+            imageView = (ImageView)itemView.findViewById(R.id.imageview);
         }
     }
 

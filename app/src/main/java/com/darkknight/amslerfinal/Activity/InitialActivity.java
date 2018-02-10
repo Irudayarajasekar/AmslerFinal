@@ -75,11 +75,13 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
         switch (view.getId()){
             case R.id.card_view1:
                 intent = new Intent(InitialActivity.this,ListActivity.class);
+                intent.putExtra("title",R.string.homeamsler);
                 intent.putExtra("testname",R.array.homelist);
                 startActivity(intent);
                 break;
             case R.id.card_view2:
                 intent = new Intent(InitialActivity.this,ListActivity.class);
+                intent.putExtra("title",R.string.clinicamsler);
                 intent.putExtra("testname",R.array.cliniclist);
                 startActivity(intent);
                 break;
