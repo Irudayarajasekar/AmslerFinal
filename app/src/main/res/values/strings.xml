@@ -15,4 +15,17 @@
         <item>Test each eye separately: Cup your hand over one eye while testing the other eye</item>
         <item>During the test, answer the questions asked by marking on the chart</item>
     </string-array>
+    <string-array name="homelist">
+        <item>Chart 1</item>
+        <item>Chart 2</item>
+    </string-array>
+    <string-array name="cliniclist">
+        <item>Chart 1</item>
+        <item>Chart 2</item>
+        <item>Chart 3</item>
+        <item>Chart 4</item>
+        <item>Chart 5</item>
+        <item>Chart 6</item>
+        <item>Chart 7</item>
+    </string-array>
 </resources>

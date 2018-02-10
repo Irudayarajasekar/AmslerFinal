@@ -16,4 +16,17 @@
         <item>ஒவ்வொரு கண் தனித்தனியாக சோதனை செய்யுங்கள்: ஒரு கண் மீது உங்கள் கையை வைத்து மூடியவாறு மற்றொரு கண்ணை சோதனை செய்யுங்கள்</item>
         <item>சோதனையின் போது, விளக்கப்படத்தில் குறிப்பதன் மூலம் கேட்கப்படும் கேள்விகளுக்கு பதிலளிக்கவும்</item>
     </string-array>
+    <string-array name="homelist">
+        <item>விளக்கப்படம் 1</item>
+        <item>விளக்கப்படம் 2</item>
+    </string-array>
+    <string-array name="cliniclist">
+        <item>விளக்கப்படம் 1</item>
+        <item>விளக்கப்படம் 2</item>
+        <item>விளக்கப்படம் 3</item>
+        <item>விளக்கப்படம் 4</item>
+        <item>விளக்கப்படம் 5</item>
+        <item>விளக்கப்படம் 6</item>
+        <item>விளக்கப்படம் 7</item>
+    </string-array>
 </resources>

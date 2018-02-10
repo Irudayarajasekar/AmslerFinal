@@ -15,4 +15,17 @@
         <item>प्रत्येक आंख को अलग से जांचें: दूसरी आंखों का परीक्षण करते समय एक हाथ में अपने हाथ को कप लें</item>
         <item>परीक्षण के दौरान, चार्ट पर अंकुश लगाने के द्वारा पूछे गए सवालों के जवाब दें</item>
     </string-array>
+    <string-array name="homelist">
+        <item>चार्ट 1</item>
+        <item>चार्ट 2</item>
+    </string-array>
+    <string-array name="cliniclist">
+        <item>चार्ट 1</item>
+        <item>चार्ट 2</item>
+        <item>चार्ट 3</item>
+        <item>चार्ट 4</item>
+        <item>चार्ट 5</item>
+        <item>चार्ट 6</item>
+        <item>चार्ट 7</item>
+    </string-array>
 </resources>
