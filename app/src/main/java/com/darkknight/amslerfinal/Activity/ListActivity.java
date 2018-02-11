@@ -38,8 +38,9 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     int chartnumber;
     Intent intent;
     TextView title;
-    int[] imageArray = {R.drawable.instructions,R.drawable.instructions,R.drawable.instructions,
-            R.drawable.instructions,R.drawable.instructions,R.drawable.instructions,R.drawable.instructions};
+    int[] imageArray = {R.drawable.chart1,R.drawable.chart1,R.drawable.chart1,
+            R.drawable.chart1,R.drawable.chart1,R.drawable.chart1,R.drawable.chart1};
+    int[] chartnames = {R.array.chart1,R.array.chart2,R.array.chart3,R.array.chart4,R.array.chart5,R.array.chart6,R.array.chart7};
     String[] nameArray;
 
     @Override
@@ -72,7 +73,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         recyclerView.addOnItemTouchListener(new RecyclerItemClickListener(this, new RecyclerItemClickListener.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                chartnumber = position+1;
+                chartnumber = position;
                 eyeframe.setVisibility(View.VISIBLE);
                 mainLayout.setAlpha(0.3f);
             }
@@ -87,16 +88,20 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
                 eyeframe.setVisibility(View.INVISIBLE);
                 mainLayout.setAlpha(1.0f);
                 intent = new Intent(ListActivity.this,QuestionsActivity.class);
-                intent.putExtra("chartnumber",chartnumber);
-                intent.putExtra("eyeside","left");
+                intent.putExtra("chartimage",imageArray[chartnumber]);
+                intent.putExtra("chartnumber",chartnames[chartnumber]);
+                intent.putExtra("eyeside",R.string.lefteyeside);
+                intent.putExtra("position",chartnumber+1);
                 startActivity(intent);
                 break;
             case R.id.righteye:
                 eyeframe.setVisibility(View.INVISIBLE);
                 mainLayout.setAlpha(1.0f);
                 intent = new Intent(ListActivity.this,QuestionsActivity.class);
-                intent.putExtra("chartnumber",chartnumber);
-                intent.putExtra("eyeside","right");
+                intent.putExtra("chartimage",imageArray[chartnumber]);
+                intent.putExtra("chartnumber",chartnames[chartnumber]);
+                intent.putExtra("eyeside",R.string.righteyeside);
+                intent.putExtra("position",chartnumber+1);
                 startActivity(intent);
                 break;
             default:

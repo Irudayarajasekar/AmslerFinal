@@ -10,6 +10,12 @@
     <string name="choose">Choose eye to test</string>
     <string name="lefteye">Left Eye</string>
     <string name="righteye">Right Eye</string>
+    <string name="lefteyeside">keep your right eye closed while testing left eye. </string>
+    <string name="righteyeside">keep your left eye closed while testing right eye. </string>
+    <string name="mark">Mark the area by drawing over the chart</string>
+    <string name="done">Done</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
     <string-array name="instructions">
         <item>Testing your eyes with an Amsler grid is easy and takes only a few minutes. Here are the basic steps</item>
         <item>Test your eyes under normal room lighting used for reading</item>
@@ -35,18 +41,18 @@
         <item>Always keep your eye focused on the dot in the centre of the grid</item>
         <item>Do you see the central black dot?</item>
         <item>Do any of the horizontal (---) or vertical (|) lines in the grid appear wavy, blurred or distorted?</item>
-        <item>Do all the boxes in the grid look like squares and of the same size?</item>
+        <item>Does any of the square look differently?</item>
         <item>Are there any "holes" (missing areas) or dark areas in the grid?</item>
-        <item>Can you see all corners and sides of the grid (while keeping your eye on the central dot)?</item>
+        <item>Are any corners and sides of the grid invisible?(while keeping your eye on the central dot)</item>
     </string-array>
     <string-array name="chart2">
         <item>Imagine a midpoint where the 2 diagonal crossing lines connect.
             Always keep your eye focused in the imaginary midpoint of these diagonal lines.</item>
         <item>Is any area not clearly visible to your eye?</item>
         <item>Do any of the horizontal (---) or vertical (|) lines in the grid appear wavy, blurred or distorted?</item>
-        <item>Do all the boxes in the grid look like squares and of the same size?</item>
+        <item>Does any of the square look differently?</item>
         <item>Are there any "holes" (missing areas) or dark areas in the grid?</item>
-        <item>Can you see all corners and sides of the grid (while keeping your eye on the central dot)?</item>
+        <item>Are any corners and sides of the grid invisible?(while keeping your eye on the central dot)</item>
     </string-array>
     <string-array name="chart3">
         <item>Always keep your eye focused on the dot in the centre of the grid</item>
@@ -57,22 +63,22 @@
     <string-array name="chart4">
         <item>Always keep your eye focused on the dot in the centre of the grid</item>
         <item>Are there any "holes" (missing areas) or dark areas in the grid?</item>
-        <item>Can you see all corners and sides of the grid (while keeping your eye on the central dot)?</item>
+        <item>Are any corners and sides of the grid invisible?(while keeping your eye on the central dot)</item>
     </string-array>
     <string-array name="chart5">
         <item>Always keep your eye focused on the dot in the centre of the grid</item>
         <item>Do any of the horizontal (---) or vertical (|) lines in the grid appear wavy, blurred or distorted?</item>
-        <item>Can you see all corners and sides of the grid (while keeping your eye on the central dot)?</item>
+        <item>Are any corners and sides of the grid invisible?(while keeping your eye on the central dot)</item>
     </string-array>
     <string-array name="chart6">
         <item>Always keep your eye focused on the dot in the centre of the grid</item>
         <item>Do any of the horizontal (---) or vertical (|) lines in the grid appear wavy, blurred or distorted?</item>
-        <item>Can you see all corners and sides of the grid (while keeping your eye on the central dot)?</item>
+        <item>Are any corners and sides of the grid invisible?(while keeping your eye on the central dot)</item>
     </string-array>
     <string-array name="chart7">
         <item>Always keep your eye focused on the dot in the centre of the grid</item>
         <item>Are there any "holes" (missing areas) or dark areas in the grid?</item>
-        <item>Do all the boxes in the grid look like squares and of the same size?</item>
+        <item>Does any of the square look differently?</item>
         <item>Do any of the horizontal (---) or vertical (|) lines in the grid appear wavy, blurred or distorted?</item>
     </string-array>
 </resources>
