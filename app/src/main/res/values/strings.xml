@@ -14,6 +14,8 @@
     <string name="righteyeside">keep your left eye closed while testing right eye. </string>
     <string name="mark">Mark the area by drawing over the chart</string>
     <string name="done">Done</string>
+    <string name="exit">Confirm Exit</string>
+    <string name="exmsg">Closing would terminate the test. Are you sure?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string-array name="instructions">
