@@ -48,6 +48,7 @@
                 android:layout_marginBottom="15dp"
                 android:layout_marginLeft="3dp"
                 android:layout_marginRight="3dp"
+                android:id="@+id/hometext"
                 android:layout_below="@+id/homeImage"
                 android:text="@string/homeamsler"
                 android:textSize="15dp"
@@ -89,6 +90,7 @@
                 android:layout_marginBottom="15dp"
                 android:textSize="15dp"
                 android:textColor="#000000"
+                android:id="@+id/clinictext"
                 android:layout_below="@+id/clinicImage"
                 android:text="@string/clinicamsler"/>
         </RelativeLayout>
@@ -131,6 +133,7 @@
                         android:gravity="center"
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="15dp"
+                        android:id="@+id/instructions"
                         android:layout_below="@+id/instructionimage"
                         android:text="@string/instruct"
                         android:textSize="15dp"
@@ -166,6 +169,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:id="@+id/languagetext"
                         android:layout_marginTop="15dp"
                         android:layout_marginBottom="15dp"
                         android:textSize="15dp"

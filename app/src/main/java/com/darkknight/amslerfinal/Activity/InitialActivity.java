@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.darkknight.amslerfinal.R;
 
@@ -22,6 +23,7 @@ import java.util.Locale;
 
 public class InitialActivity extends AppCompatActivity implements View.OnClickListener {
     CardView cardView1,cardView2,cardView3,cardView4,english,tamil,hindi;
+    TextView hometext,clinictext,instructions,languagetext;
     FrameLayout frameLayout;
     RelativeLayout mainLayout;
     public static final String MyPREFERENCES = "AppPreferences" ;
@@ -40,6 +42,10 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
         cardView2 = (CardView)findViewById(R.id.card_view2);
         cardView3 = (CardView)findViewById(R.id.card_view3);
         cardView4 = (CardView)findViewById(R.id.card_view4);
+        hometext = (TextView) findViewById(R.id.hometext);
+        clinictext = (TextView) findViewById(R.id.clinictext);
+        instructions = (TextView) findViewById(R.id.instructions);
+        languagetext = (TextView) findViewById(R.id.languagetext);
         english = (CardView)findViewById(R.id.english);
         tamil = (CardView)findViewById(R.id.tamil);
         hindi = (CardView)findViewById(R.id.hindi);
@@ -65,9 +71,12 @@ public class InitialActivity extends AppCompatActivity implements View.OnClickLi
         Configuration config = new Configuration();
         config.locale = locale;
         getBaseContext().getResources().updateConfiguration(config, getBaseContext().getResources().getDisplayMetrics());
-        intent = getIntent();
-        finish();
-        startActivity(intent);
+        hometext.setText(R.string.homeamsler);
+        clinictext.setText(R.string.clinicamsler);
+        instructions.setText(R.string.instruct);
+        languagetext.setText(R.string.lang);
+        mainLayout.setAlpha(1.0f);
+        frameLayout.setVisibility(View.INVISIBLE);
     }
 
     @Override
