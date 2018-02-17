@@ -18,6 +18,7 @@
     <string name="exmsg">Closing would terminate the test. Are you sure?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="generate">GENERATE REPORT</string>
     <string-array name="instructions">
         <item>Testing your eyes with an Amsler grid is easy and takes only a few minutes. Here are the basic steps</item>
         <item>Test your eyes under normal room lighting used for reading</item>

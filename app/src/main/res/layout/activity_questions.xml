@@ -18,7 +18,7 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/drawlayout"
+            android:id="@+id/drawlayout1"
             android:padding="5dp">
 
     <ImageView
@@ -27,8 +27,24 @@
         android:layout_centerInParent="true"
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
-        android:id="@+id/chart"
+        android:id="@+id/chart1"
         android:src="@drawable/chart1"/>
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/drawlayout2"
+            android:visibility="invisible"
+            android:padding="5dp">
+
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:id="@+id/chart2"
+                android:src="@drawable/chart1"/>
         </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"

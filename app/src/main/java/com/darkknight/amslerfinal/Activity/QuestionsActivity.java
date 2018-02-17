@@ -20,6 +20,7 @@ import android.widget.TextView;
 
 import com.darkknight.amslerfinal.R;
 
+import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -34,27 +35,41 @@ import Utils.DrawOverView;
  */
 
 public class QuestionsActivity extends AppCompatActivity implements View.OnClickListener{
-    RelativeLayout mainLayout,drawLayout;
+    RelativeLayout mainLayout,drawLayout1,drawLayout2;
     LinearLayout buttonlayout;
     FrameLayout instructionFrame;
     TextView subinstructiontext,question;
     Button yes,no,closeins,done;
-    ImageView chart;
+    ImageView chart1,chart2;
     int position,currentposition;
     String[] questionslist;
-    boolean isComplete;
+    boolean isComplete,isdefect=false;
     String instruction;
-    Intent intent;
-    DrawOverView drawOverView;
+    Intent intent,reportintent;
+    DrawOverView drawOverView1,drawOverView2;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
         mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
-        drawLayout = (RelativeLayout)findViewById(R.id.drawlayout);
-        drawOverView = new DrawOverView(this);
-        drawLayout.addView(drawOverView);
-        drawOverView.setVisibility(View.INVISIBLE);
+        drawLayout1 = (RelativeLayout)findViewById(R.id.drawlayout1);
+        drawOverView1 = new DrawOverView(this);
+        drawLayout1.addView(drawOverView1);
+        drawOverView1.setVisibility(View.INVISIBLE);
+        drawLayout2 = (RelativeLayout)findViewById(R.id.drawlayout2);
+        drawOverView2 = new DrawOverView(this);
+        drawLayout2.addView(drawOverView2);
+        drawOverView2.setVisibility(View.INVISIBLE);
+        isComplete = getIntent().getBooleanExtra("iscomplete",false);
+        isdefect = getIntent().getBooleanExtra("isdefect",false);
+        if(!isComplete) {
+            drawLayout1.setVisibility(View.VISIBLE);
+            drawLayout2.setVisibility(View.INVISIBLE);
+        }
+        else {
+            drawLayout2.setVisibility(View.VISIBLE);
+            drawLayout1.setVisibility(View.INVISIBLE);
+        }
         buttonlayout = (LinearLayout)findViewById(R.id.buttonlayout);
         instructionFrame = (FrameLayout)findViewById(R.id.instructionframe);
         subinstructiontext = (TextView)findViewById(R.id.subinstructiontext);
@@ -67,9 +82,12 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         closeins.setOnClickListener(this);
         done.setOnClickListener(this);
         question = (TextView)findViewById(R.id.question);
-        chart = (ImageView)findViewById(R.id.chart);
-        chart.setImageResource(getIntent().getIntExtra("chartimage",R.drawable.settings));
-        chart.setMaxHeight(400);
+        chart1 = (ImageView)findViewById(R.id.chart1);
+        chart1.setImageResource(getIntent().getIntExtra("chartimage",R.drawable.settings));
+        chart1.setMaxHeight(400);
+        chart2 = (ImageView)findViewById(R.id.chart2);
+        chart2.setImageResource(getIntent().getIntExtra("chartimage",R.drawable.settings));
+        chart2.setMaxHeight(400);
         instructionFrame.setVisibility(View.VISIBLE);
         mainLayout.setAlpha(0.3f);
         position = getIntent().getIntExtra("position",1);
@@ -77,8 +95,12 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         instruction = getString(getIntent().getIntExtra("eyeside",R.string.righteyeside))+questionslist[0];
         subinstructiontext.setText(instruction);
         currentposition = 1;
-        isComplete = getIntent().getBooleanExtra("iscomplete",false);
         question.setText(questionslist[currentposition]);
+        reportintent = new Intent(QuestionsActivity.this,ReportActivity.class);
+        if(getIntent().hasExtra("lefteyereport"))
+            reportintent.putExtra("lefteyereport",getIntent().getByteArrayExtra("lefteyereport"));
+        else if(getIntent().hasExtra("righteyereport"))
+            reportintent.putExtra("righteyereport",getIntent().getByteArrayExtra("righteyereport"));
     }
 
     @Override
@@ -89,7 +111,8 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                 mainLayout.setAlpha(1.0f);
                 done.setVisibility(View.INVISIBLE);
                 buttonlayout.setVisibility(View.VISIBLE);
-                drawOverView.setVisibility(View.INVISIBLE);
+                drawOverView1.setVisibility(View.INVISIBLE);
+                drawOverView2.setVisibility(View.INVISIBLE);
                 instructionFrame.setVisibility(View.INVISIBLE);
                 break;
             case R.id.no:
@@ -98,12 +121,17 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                     intent.putExtra("position",2);
                     intent.putExtra("chartnumber",R.array.chart2);
                     intent.putExtra("chartimage",R.drawable.chart1);
+                    intent.putExtra("isdefect",isdefect);
                     if(isComplete) {
                         intent.putExtra("iscomplete", true);
                         if(getIntent().getIntExtra("eyeside",R.string.righteyeside) == R.string.lefteyeside)
-                            intent.putExtra("eyeside",R.string.righteyeside);
+                            intent.putExtra("eyeside", R.string.righteyeside);
                         else
-                            intent.putExtra("eyeside",R.string.lefteyeside);
+                            intent.putExtra("eyeside", R.string.lefteyeside);
+                        if(reportintent.hasExtra("lefteyereport"))
+                            intent.putExtra("lefteyereport",reportintent.getByteArrayExtra("lefteyereport"));
+                        else if(reportintent.hasExtra("righteyereport"))
+                            intent.putExtra("righteyereport",reportintent.getByteArrayExtra("righteyereport"));
                     }
                     finish();
                     startActivity(intent);
@@ -114,56 +142,43 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                 }
                 else{
                     if(isComplete) {
-                        drawOverView.setVisibility(View.VISIBLE);
-                        drawLayout.setDrawingCacheEnabled(true);
-                        Bitmap b = drawLayout.getDrawingCache();
-                        FileOutputStream out = null;
-                        File file=new File(Environment.getExternalStoragePublicDirectory(
-                                Environment.DIRECTORY_PICTURES), "sampleimage.png");
-                        try {
-                            out = new FileOutputStream(file);
-                            b.compress(Bitmap.CompressFormat.PNG, 100, out);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        } finally {
-                            try {
-                                if (out != null) {
-                                    out.close();
-                                }
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                        drawOverView2.setVisibility(View.VISIBLE);
+                        drawLayout2.setDrawingCacheEnabled(true);
+                        Bitmap b = drawLayout2.getDrawingCache();
+                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                        b.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                        if(reportintent.hasExtra("lefteyereport")) {
+                            subinstructiontext.setText(getString(R.string.righteyeside) + questionslist[0]);
+                            reportintent.putExtra("righteyereport",byteArrayOutputStream.toByteArray());
                         }
+                        else {
+                            subinstructiontext.setText(getString(R.string.lefteyeside) + questionslist[0]);
+                            reportintent.putExtra("lefteyereport",byteArrayOutputStream.toByteArray());
+                        }
+                        reportintent.putExtra("isdefect",isdefect);
+                        startActivity(reportintent);
                     }
                     else{
                         isComplete = true;
-                        drawOverView.setVisibility(View.VISIBLE);
-                        drawLayout.setDrawingCacheEnabled(true);
-                        Bitmap b = drawLayout.getDrawingCache();
-                        FileOutputStream out = null;
-                        File file=new File(Environment.getExternalStoragePublicDirectory(
-                                Environment.DIRECTORY_PICTURES), "sampleimageoneside.png");
-                        try {
-                            out = new FileOutputStream(file);
-                            b.compress(Bitmap.CompressFormat.PNG, 100, out);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        } finally {
-                            try {
-                                if (out != null) {
-                                    out.close();
-                                }
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        drawOverView.clear();
+                        drawOverView1.setVisibility(View.VISIBLE);
+                        drawLayout1.setDrawingCacheEnabled(true);
+                        Bitmap b = drawLayout1.getDrawingCache();
+                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                        b.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                        drawOverView1.clear();
                         currentposition = 1;
                         instructionFrame.setVisibility(View.VISIBLE);
-                        if(getIntent().getIntExtra("eyeside",R.string.righteyeside) == R.string.lefteyeside)
-                            subinstructiontext.setText(getString(R.string.righteyeside)+questionslist[0]);
-                        else
-                            subinstructiontext.setText(getString(R.string.lefteyeside)+questionslist[0]);
+                        if(getIntent().getIntExtra("eyeside",R.string.righteyeside) == R.string.lefteyeside) {
+                            subinstructiontext.setText(getString(R.string.righteyeside) + questionslist[0]);
+                            reportintent.putExtra("lefteyereport",byteArrayOutputStream.toByteArray());
+                        }
+                        else {
+                            subinstructiontext.setText(getString(R.string.lefteyeside) + questionslist[0]);
+                            reportintent.putExtra("righteyereport",byteArrayOutputStream.toByteArray());
+                        }
+                        drawLayout1.setVisibility(View.INVISIBLE);
+                        drawOverView1.setVisibility(View.INVISIBLE);
+                        drawLayout2.setVisibility(View.VISIBLE);
                         question.setText(questionslist[currentposition]);
                         mainLayout.setAlpha(0.3f);
                     }
@@ -177,8 +192,12 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                     }
                 }
                 else{
+                    isdefect = true;
                     question.setText(R.string.mark);
-                    drawOverView.setVisibility(View.VISIBLE);
+                    if(!isComplete)
+                        drawOverView1.setVisibility(View.VISIBLE);
+                    else
+                        drawOverView2.setVisibility(View.VISIBLE);
                     buttonlayout.setVisibility(View.INVISIBLE);
                     done.setVisibility(View.VISIBLE);
                 }
@@ -189,59 +208,49 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                     done.setVisibility(View.INVISIBLE);
                     buttonlayout.setVisibility(View.VISIBLE);
                     question.setText(questionslist[currentposition]);
-                    drawOverView.setVisibility(View.INVISIBLE);
+                    if(!isComplete)
+                        drawOverView1.setVisibility(View.INVISIBLE);
+                    else
+                        drawOverView2.setVisibility(View.INVISIBLE);
                 }else{
                     if(isComplete) {
-                        drawOverView.setVisibility(View.VISIBLE);
-                        drawLayout.setDrawingCacheEnabled(true);
-                        Bitmap b = drawLayout.getDrawingCache();
-                        FileOutputStream out = null;
-                        File file=new File(Environment.getExternalStoragePublicDirectory(
-                                Environment.DIRECTORY_PICTURES), "sampleimage.png");
-                        try {
-                            out = new FileOutputStream(file);
-                            b.compress(Bitmap.CompressFormat.PNG, 100, out);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        } finally {
-                            try {
-                                if (out != null) {
-                                    out.close();
-                                }
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
+                        drawOverView2.setVisibility(View.VISIBLE);
+                        drawLayout2.setDrawingCacheEnabled(true);
+                        Bitmap b = drawLayout2.getDrawingCache();
+                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                        b.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                        if(reportintent.hasExtra("lefteyereport")) {
+                            subinstructiontext.setText(getString(R.string.righteyeside) + questionslist[0]);
+                            reportintent.putExtra("righteyereport",byteArrayOutputStream.toByteArray());
                         }
+                        else {
+                            subinstructiontext.setText(getString(R.string.lefteyeside) + questionslist[0]);
+                            reportintent.putExtra("lefteyereport",byteArrayOutputStream.toByteArray());
+                        }
+                        reportintent.putExtra("isdefect",isdefect);
+                        startActivity(reportintent);
                     }
                     else{
                         isComplete = true;
-                        drawOverView.setVisibility(View.VISIBLE);
-                        drawLayout.setDrawingCacheEnabled(true);
-                        Bitmap b = drawLayout.getDrawingCache();
-                        FileOutputStream out = null;
-                        File file=new File(Environment.getExternalStoragePublicDirectory(
-                                Environment.DIRECTORY_PICTURES), "sampleimageoneside.png");
-                        try {
-                            out = new FileOutputStream(file);
-                            b.compress(Bitmap.CompressFormat.PNG, 100, out);
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        } finally {
-                            try {
-                                if (out != null) {
-                                    out.close();
-                                }
-                            } catch (IOException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        drawOverView.clear();
+                        drawOverView1.setVisibility(View.VISIBLE);
+                        drawLayout1.setDrawingCacheEnabled(true);
+                        Bitmap b = drawLayout1.getDrawingCache();
+                        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+                        b.compress(Bitmap.CompressFormat.PNG, 100, byteArrayOutputStream);
+                        drawOverView1.clear();
                         currentposition = 1;
                         instructionFrame.setVisibility(View.VISIBLE);
-                        if(getIntent().getIntExtra("eyeside",R.string.righteyeside) == R.string.lefteyeside)
-                            subinstructiontext.setText(getString(R.string.righteyeside)+questionslist[0]);
-                        else
-                            subinstructiontext.setText(getString(R.string.lefteyeside)+questionslist[0]);
+                        if(getIntent().getIntExtra("eyeside",R.string.righteyeside) == R.string.lefteyeside) {
+                            subinstructiontext.setText(getString(R.string.righteyeside) + questionslist[0]);
+                            reportintent.putExtra("lefteyereport",byteArrayOutputStream.toByteArray());
+                        }
+                        else {
+                            subinstructiontext.setText(getString(R.string.lefteyeside) + questionslist[0]);
+                            reportintent.putExtra("righteyereport",byteArrayOutputStream.toByteArray());
+                        }
+                        drawLayout1.setVisibility(View.INVISIBLE);
+                        drawOverView1.setVisibility(View.INVISIBLE);
+                        drawLayout2.setVisibility(View.VISIBLE);
                         mainLayout.setAlpha(0.3f);
                         question.setText(questionslist[currentposition]);
                     }

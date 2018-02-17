@@ -18,6 +18,7 @@
     <string name="yes">ஆம்</string>
     <string name="done">நிறைவு</string>
     <string name="no">இல்லை</string>
+    <string name="generate">அறிக்கை உருவாக்கு</string>
     <string-array name="instructions">
         <item>ஒரு அமிலர் கிரிட் பயன்படுத்தி கண்களை சோதனை செய்வது எளிதானது மற்றும் சில நிமிடங்கள்
             மட்டுமே எடுக்கிறது. அடிப்படை முறைகள் பின்வருமாறு</item>

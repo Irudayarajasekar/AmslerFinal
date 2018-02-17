@@ -18,6 +18,7 @@
     <string name="done">किया हुआ</string>
     <string name="exit">बाहर निकलने की पुष्टि करें</string>
     <string name="exmsg">समापन परीक्षा को समाप्त करेगा क्या आपको यकीन है?</string>
+    <string name="generate">रिपोर्ट बनाओ</string>
     <string-array name="instructions">
         <item>एम्सलर ग्रिड के साथ अपनी आंखों का परीक्षण करना आसान है और केवल कुछ मिनट लगते हैं। यहां बुनियादी कदम हैं</item>
         <item>पढ़ने के लिए इस्तेमाल सामान्य कमरे प्रकाश के तहत अपनी आँखों का परीक्षण करें</item>
