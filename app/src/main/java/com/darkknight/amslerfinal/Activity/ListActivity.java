@@ -38,7 +38,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     int chartnumber;
     Intent intent;
     TextView title;
-    int[] imageArray = {R.drawable.chart1,R.drawable.chart1,R.drawable.chart1,
+    int[] imageArray = {R.drawable.chart1,R.drawable.chart2,R.drawable.chart3,
             R.drawable.chart1,R.drawable.chart1,R.drawable.chart1,R.drawable.chart1};
     int[] chartnames = {R.array.chart1,R.array.chart2,R.array.chart3,R.array.chart4,R.array.chart5,R.array.chart6,R.array.chart7};
     String[] nameArray;
