@@ -19,6 +19,10 @@
     <string name="yes">Yes</string>
     <string name="no">No</string>
     <string name="generate">GENERATE REPORT</string>
+    <string name="lefteyereport">Left Eye Report</string>
+    <string name="righteyereport">Right Eye Report</string>
+    <string name="defect">You have defect. Please consult a doctor</string>
+    <string name="nodefect">You have no defects. Thanks for taking test</string>
     <string-array name="instructions">
         <item>Testing your eyes with an Amsler grid is easy and takes only a few minutes. Here are the basic steps</item>
         <item>Test your eyes under normal room lighting used for reading</item>
@@ -59,7 +63,7 @@
     </string-array>
     <string-array name="chart3">
         <item>Always keep your eye focused on the dot in the centre of the grid</item>
-        <item>Can you see red colour in all the areas?</item>
+        <item>Is any red area not clearly visible to your eyes?</item>
         <item>Do any of the horizontal (---) or vertical (|) lines in the grid appear wavy, blurred or distorted?</item>
         <item>Are there any "holes" (missing areas) or dark areas in the grid?</item>
     </string-array>

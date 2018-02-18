@@ -36,7 +36,7 @@ public class ReportActivity extends AppCompatActivity {
     ViewPager vp;
     Button generate;
     Bitmap[] imageArray;
-    String[] titleArray= {"Left Eye Report","Right Eye Report"};
+    int[] titleArray= {R.string.lefteyereport,R.string.righteyereport};
     String[] imageNameArray = {"lefteyereport","righteyereport"};
 
     @Override
@@ -103,9 +103,9 @@ public class ReportActivity extends AppCompatActivity {
             ((TextView)page.findViewById(R.id.textview1)).setText(titleArray[position]);
             ((ImageView)page.findViewById(R.id.imageview)).setImageBitmap(imageArray[position]);
             if(getIntent().getBooleanExtra("isdefect",false)){
-                ((TextView)page.findViewById(R.id.instructiontext)).setText("You have defect. Please consult a doctor");
+                ((TextView)page.findViewById(R.id.instructiontext)).setText(R.string.defect);
             }else {
-                ((TextView)page.findViewById(R.id.instructiontext)).setText("No defects found. Thanks for taking the test");
+                ((TextView)page.findViewById(R.id.instructiontext)).setText(R.string.nodefect);
             }
             ((ViewPager) container).addView(page, 0);
             return page;
