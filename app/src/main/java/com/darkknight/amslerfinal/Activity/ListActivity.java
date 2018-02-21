@@ -1,14 +1,18 @@
 package com.darkknight.amslerfinal.Activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -16,7 +20,6 @@ import android.widget.TextView;
 import com.darkknight.amslerfinal.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import Utils.ListAdapter;
 import Utils.ListDetails;
@@ -33,14 +36,20 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     ListDetails listDetails;
     DividerItemDecoration dividerItemDecoration;
     RelativeLayout mainLayout;
-    FrameLayout eyeframe;
+    FrameLayout eyeframe,nameframe;
+    Button name;
+    EditText nameofpatient;
     CardView lefteye,righteye;
     int chartnumber;
+    public static final String MyPREFERENCES = "AppPreferences" ;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
     Intent intent;
     TextView title;
     int[] imageArray = {R.drawable.chart1,R.drawable.chart2,R.drawable.chart3,
-            R.drawable.chart4,R.drawable.chart5,R.drawable.chart6,R.drawable.chart1};
-    int[] chartnames = {R.array.chart1,R.array.chart2,R.array.chart3,R.array.chart4,R.array.chart5,R.array.chart6,R.array.chart7};
+            R.drawable.chart4,R.drawable.chart5a,R.drawable.chart5b,R.drawable.chart6a,R.drawable.chart6b,R.drawable.chart7};
+    int[] chartnames = {R.array.chart1,R.array.chart2,R.array.chart3,R.array.chart4,R.array.chart5,R.array.chart5,
+            R.array.chart6,R.array.chart6,R.array.chart7};
     String[] nameArray;
 
     @Override
@@ -50,8 +59,12 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         title = (TextView)findViewById(R.id.title);
         mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
         eyeframe = (FrameLayout)findViewById(R.id.eyeframe);
+        nameframe = (FrameLayout)findViewById(R.id.nameframe);
         lefteye = (CardView)findViewById(R.id.lefteye);
         righteye = (CardView)findViewById(R.id.righteye);
+        name = (Button)findViewById(R.id.nameok);
+        nameofpatient = (EditText)findViewById(R.id.nameofpatient);
+        name.setOnClickListener(this);
         lefteye.setOnClickListener(this);
         righteye.setOnClickListener(this);
         title.setText(getIntent().getIntExtra("title",R.string.homeamsler));
@@ -74,7 +87,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onItemClick(View view, int position) {
                 chartnumber = position;
-                eyeframe.setVisibility(View.VISIBLE);
+                nameframe.setVisibility(View.VISIBLE);
                 mainLayout.setAlpha(0.3f);
             }
         }));
@@ -104,14 +117,27 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
                 intent.putExtra("position",chartnumber+1);
                 startActivity(intent);
                 break;
+            case R.id.nameok:
+                if(!nameofpatient.getText().toString().trim().isEmpty()){
+                    nameframe.setVisibility(View.INVISIBLE);
+                    sharedPreferences = getSharedPreferences(MyPREFERENCES,MODE_PRIVATE);
+                    editor = sharedPreferences.edit();
+                    editor.putString("nameofpatient",nameofpatient.getText().toString().trim());
+                    editor.commit();
+                    eyeframe.setVisibility(View.VISIBLE);
+                    nameofpatient.setText("");
+                }else{
+                    Snackbar.make(view,"Please fill your name",Snackbar.LENGTH_SHORT).show();
+                }
             default:
                 break;
         }
     }
     @Override
     public void onBackPressed() {
-        if(eyeframe.getVisibility() == View.VISIBLE){
+        if(eyeframe.getVisibility() == View.VISIBLE || nameframe.getVisibility() ==View.VISIBLE){
             eyeframe.setVisibility(View.INVISIBLE);
+            nameframe.setVisibility(View.INVISIBLE);
             mainLayout.setAlpha(1.0f);
         }else{
             super.onBackPressed();

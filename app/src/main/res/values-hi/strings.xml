@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AmslerFinal</string>
+    <string name="app_name">Amsler Grid Test</string>
     <string name="action_settings">Settings</string>
     <string name="maintext">एम्सलेर ग्रिड टेस्ट कैसे करें</string>
     <string name="ok">ठीक</string>
@@ -21,8 +21,11 @@
     <string name="generate">रिपोर्ट बनाओ</string>
     <string name="lefteyereport">बायीं आँख रिपोर्ट</string>
     <string name="righteyereport">दाहिना आँख रिपोर्ट</string>
-    <string name="defect">आपके पास दोष है कृपया डॉक्टर से परामर्श करें</string>
+    <string name="defect">आपके पास एक केंद्रीय दोष हो सकता है। कृपया डॉक्टर से परामर्श करें</string>
     <string name="nodefect">आपके पास कोई दोष नहीं है परीक्षा लेने के लिए धन्यवाद</string>
+    <string name="success">रिपोर्ट फोन भंडारण में संग्रहीत</string>
+    <string name="entername">अपना नाम दर्ज करें</string>
+    <string name="nameok">ठीक</string>
     <string-array name="instructions">
         <item>एम्सलर ग्रिड के साथ अपनी आंखों का परीक्षण करना आसान है और केवल कुछ मिनट लगते हैं। यहां बुनियादी कदम हैं</item>
         <item>पढ़ने के लिए इस्तेमाल सामान्य कमरे प्रकाश के तहत अपनी आँखों का परीक्षण करें</item>
@@ -40,8 +43,10 @@
         <item>चार्ट 2</item>
         <item>चार्ट 3</item>
         <item>चार्ट 4</item>
-        <item>चार्ट 5</item>
-        <item>चार्ट 6</item>
+        <item>चार्ट 5A</item>
+        <item>चार्ट 5B</item>
+        <item>चार्ट 6A</item>
+        <item>चार्ट 6B</item>
         <item>चार्ट 7</item>
     </string-array>
     <string-array name="chart1">

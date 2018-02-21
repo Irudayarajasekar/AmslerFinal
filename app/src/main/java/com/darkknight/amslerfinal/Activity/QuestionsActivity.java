@@ -43,7 +43,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     ImageView chart1,chart2;
     int position,currentposition;
     String[] questionslist;
-    boolean isComplete,isdefect=false;
+    boolean isComplete,isFirstIns=true,isdefect=false;
     String instruction;
     Intent intent,reportintent;
     DrawOverView drawOverView1,drawOverView2;
@@ -108,19 +108,24 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         int id = view.getId();
         switch (id){
             case R.id.closeins:
-                mainLayout.setAlpha(1.0f);
-                done.setVisibility(View.INVISIBLE);
-                buttonlayout.setVisibility(View.VISIBLE);
-                drawOverView1.setVisibility(View.INVISIBLE);
-                drawOverView2.setVisibility(View.INVISIBLE);
-                instructionFrame.setVisibility(View.INVISIBLE);
+                if(isFirstIns){
+                    isFirstIns =false;
+                 subinstructiontext.setText(questionslist[currentposition]);
+                }else {
+                    mainLayout.setAlpha(1.0f);
+                    done.setVisibility(View.INVISIBLE);
+                    buttonlayout.setVisibility(View.VISIBLE);
+                    drawOverView1.setVisibility(View.INVISIBLE);
+                    drawOverView2.setVisibility(View.INVISIBLE);
+                    instructionFrame.setVisibility(View.INVISIBLE);
+                }
                 break;
             case R.id.no:
                 if(position == 1 && currentposition == 1){
                     intent = getIntent();
                     intent.putExtra("position",2);
                     intent.putExtra("chartnumber",R.array.chart2);
-                    intent.putExtra("chartimage",R.drawable.chart1);
+                    intent.putExtra("chartimage",R.drawable.chart2);
                     intent.putExtra("isdefect",isdefect);
                     if(isComplete) {
                         intent.putExtra("iscomplete", true);
@@ -139,6 +144,9 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                 else if(currentposition+1<questionslist.length){
                     currentposition+=1;
                     question.setText(questionslist[currentposition]);
+                    subinstructiontext.setText(questionslist[currentposition]);
+                    instructionFrame.setVisibility(View.VISIBLE);
+                    mainLayout.setAlpha(0.3f);
                 }
                 else{
                     if(isComplete) {
@@ -181,6 +189,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                         drawLayout2.setVisibility(View.VISIBLE);
                         question.setText(questionslist[currentposition]);
                         mainLayout.setAlpha(0.3f);
+                        isFirstIns = true;
                     }
                 }
                 break;
@@ -189,6 +198,9 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                     if(currentposition+1<questionslist.length){
                         currentposition+=1;
                         question.setText(questionslist[currentposition]);
+                        subinstructiontext.setText(questionslist[currentposition]);
+                        instructionFrame.setVisibility(View.VISIBLE);
+                        mainLayout.setAlpha(0.3f);
                     }
                 }
                 else{
@@ -208,6 +220,9 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                     done.setVisibility(View.INVISIBLE);
                     buttonlayout.setVisibility(View.VISIBLE);
                     question.setText(questionslist[currentposition]);
+                    subinstructiontext.setText(questionslist[currentposition]);
+                    instructionFrame.setVisibility(View.VISIBLE);
+                    mainLayout.setAlpha(0.3f);
                     if(!isComplete)
                         drawOverView1.setVisibility(View.INVISIBLE);
                     else
@@ -253,6 +268,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                         drawLayout2.setVisibility(View.VISIBLE);
                         mainLayout.setAlpha(0.3f);
                         question.setText(questionslist[currentposition]);
+                        isFirstIns = true;
                     }
                 }
                 break;

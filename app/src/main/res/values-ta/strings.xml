@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AmslerFinal</string>
+    <string name="app_name">Amsler Grid Test</string>
     <string name="action_settings">Settings</string>
     <string name="maintext">அமிலர் கிரிட் டெஸ்ட் செய்வது எப்படி</string>
     <string name="ok">சரி</string>
@@ -21,8 +21,11 @@
     <string name="generate">அறிக்கை உருவாக்கு</string>
     <string name="lefteyereport">இடது கண் அறிக்கை</string>
     <string name="righteyereport">வலது கண் அறிக்கை</string>
-    <string name="defect">உங்களுக்கு குறைபாடு உள்ளது. தயவு செய்து மருத்துவரை அணுகவும்</string>
+    <string name="defect">உங்களுக்கு மத்திய குறைபாடு இருக்கலாம். தயவு செய்து மருத்துவரை அணுகவும்</string>
     <string name="nodefect">உங்களுக்கு குறைபாடுகள் இல்லை. சோதனை எடுத்துக்கொண்டதற்கு நன்றி</string>
+    <string name="success">அறிக்கை வெற்றிகரமாக உருவாக்கப்பட்டது</string>
+    <string name="entername">உங்களுடைய பெயரை பதிவு செய்யவும்</string>
+    <string name="nameok">சரி</string>
     <string-array name="instructions">
         <item>ஒரு அமிலர் கிரிட் பயன்படுத்தி கண்களை சோதனை செய்வது எளிதானது மற்றும் சில நிமிடங்கள்
             மட்டுமே எடுக்கிறது. அடிப்படை முறைகள் பின்வருமாறு</item>
@@ -41,8 +44,10 @@
         <item>விளக்கப்படம் 2</item>
         <item>விளக்கப்படம் 3</item>
         <item>விளக்கப்படம் 4</item>
-        <item>விளக்கப்படம் 5</item>
-        <item>விளக்கப்படம் 6</item>
+        <item>விளக்கப்படம் 5அ</item>
+        <item>விளக்கப்படம் 5ஆ</item>
+        <item>விளக்கப்படம் 6அ</item>
+        <item>விளக்கப்படம் 6ஆ</item>
         <item>விளக்கப்படம் 7</item>
     </string-array>
     <string-array name="chart1">

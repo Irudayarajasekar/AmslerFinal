@@ -1,12 +1,14 @@
 package com.darkknight.amslerfinal.Activity;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -36,13 +38,18 @@ public class ReportActivity extends AppCompatActivity {
     ViewPager vp;
     Button generate;
     Bitmap[] imageArray;
+    String name;
     int[] titleArray= {R.string.lefteyereport,R.string.righteyereport};
     String[] imageNameArray = {"lefteyereport","righteyereport"};
+    public static final String MyPREFERENCES = "AppPreferences" ;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+        sharedPreferences = getSharedPreferences(MyPREFERENCES,MODE_PRIVATE);
+        name = sharedPreferences.getString("nameofpatient","default");
         imageArray = new Bitmap[2];
         Bitmap image = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("lefteyereport"),0,
                 getIntent().getByteArrayExtra("lefteyereport").length);
@@ -62,9 +69,10 @@ public class ReportActivity extends AppCompatActivity {
             public void onClick(View view) {
                 for (int i=0;i<2;i++){
                     String filename = imageNameArray[i];
-                    filename+= DateFormat.getTimeInstance().format(new Date())+".png";
+                    filename+= "_"+name+".png";
                     generateReport(filename,imageArray[i]);
                 }
+                Snackbar.make(view,R.string.success,Snackbar.LENGTH_SHORT).show();
             }
         });
     }

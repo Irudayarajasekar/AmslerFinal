@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">AmslerFinal</string>
+    <string name="app_name">Amsler Grid Test</string>
     <string name="action_settings">Settings</string>
     <string name="maintext">How to do the Amsler Grid Test</string>
     <string name="ok">OK, GOT IT</string>
@@ -21,8 +21,11 @@
     <string name="generate">GENERATE REPORT</string>
     <string name="lefteyereport">Left Eye Report</string>
     <string name="righteyereport">Right Eye Report</string>
-    <string name="defect">You have defect. Please consult a doctor</string>
-    <string name="nodefect">You have no defects. Thanks for taking test</string>
+    <string name="defect">You may have central field defect. Please consult a doctor</string>
+    <string name="nodefect">You donot have any macular defect. Thanks for taking test</string>
+    <string name="success">Report stored to the phone storage</string>
+    <string name="entername">Please enter your name</string>
+    <string name="nameok">OK</string>
     <string-array name="instructions">
         <item>Testing your eyes with an Amsler grid is easy and takes only a few minutes. Here are the basic steps</item>
         <item>Test your eyes under normal room lighting used for reading</item>
@@ -40,8 +43,10 @@
         <item>Chart 2</item>
         <item>Chart 3</item>
         <item>Chart 4</item>
-        <item>Chart 5</item>
-        <item>Chart 6</item>
+        <item>Chart 5A</item>
+        <item>Chart 5B</item>
+        <item>Chart 6A</item>
+        <item>Chart 6B</item>
         <item>Chart 7</item>
     </string-array>
     <string-array name="chart1">

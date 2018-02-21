@@ -31,5 +31,13 @@
         android:layout_margin="10dp">
         <include layout="@layout/eyecontent"/>
     </FrameLayout>
-
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:id="@+id/nameframe"
+        android:visibility="invisible"
+        android:layout_margin="10dp">
+        <include layout="@layout/namecontent"/>
+    </FrameLayout>
 </RelativeLayout>

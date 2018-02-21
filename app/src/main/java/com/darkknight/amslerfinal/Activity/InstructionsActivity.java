@@ -3,6 +3,7 @@ package com.darkknight.amslerfinal.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -15,6 +16,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.darkknight.amslerfinal.R;
+
+import java.util.Locale;
 
 import me.relex.circleindicator.CircleIndicator;
 
