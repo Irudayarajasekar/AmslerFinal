@@ -100,4 +100,15 @@
         <item>கட்டத்தில் எந்த கிடைமட்ட (---) அல்லது செங்குத்து (|) வரிகளை அலையவோ,
             மங்கலாகவோ அல்லது திரிக்கப்பட்டதாகவோ தோன்றுகிறதா?</item>
     </string-array>
+    <string-array name="codes">
+        <item>6|5|0|1|2|3</item>
+        <item>6|4|0|1|2|3</item>
+        <item>6|4|0|2</item>
+        <item>6|2|3</item>
+        <item>6|0|3</item>
+        <item>6|0|3</item>
+        <item>6|0|3</item>
+        <item>6|0|3</item>
+        <item>6|2|1|0</item>
+    </string-array>
 </resources>

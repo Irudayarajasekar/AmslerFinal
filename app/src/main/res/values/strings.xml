@@ -93,4 +93,15 @@
         <item>Does any of the square look differently?</item>
         <item>Do any of the horizontal (---) or vertical (|) lines in the grid appear wavy, blurred or distorted?</item>
     </string-array>
+    <string-array name="codes">
+        <item>6|5|0|1|2|3</item>
+        <item>6|4|0|1|2|3</item>
+        <item>6|4|0|2</item>
+        <item>6|2|3</item>
+        <item>6|0|3</item>
+        <item>6|0|3</item>
+        <item>6|0|3</item>
+        <item>6|0|3</item>
+        <item>6|2|1|0</item>
+    </string-array>
 </resources>

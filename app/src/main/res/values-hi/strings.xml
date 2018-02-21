@@ -92,4 +92,15 @@
         <item>क्या किसी भी वर्ग के अलग दिखते हैं?</item>
         <item>ग्रिड में किसी भी क्षैतिज (---) या ऊर्ध्वाधर (|) लाइनों को लहराती, धुंधला या विकृत दिखाई दें?</item>
     </string-array>
+    <string-array name="codes">
+        <item>6|5|0|1|2|3</item>
+        <item>6|4|0|1|2|3</item>
+        <item>6|4|0|2</item>
+        <item>6|2|3</item>
+        <item>6|0|3</item>
+        <item>6|0|3</item>
+        <item>6|0|3</item>
+        <item>6|0|3</item>
+        <item>6|2|1|0</item>
+    </string-array>
 </resources>

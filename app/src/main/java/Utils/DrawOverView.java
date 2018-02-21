@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
 import android.view.MotionEvent;
@@ -29,7 +30,7 @@ public class DrawOverView extends View {
         mPaint = new Paint();
         mPaint.setAntiAlias(true);
         mPaint.setDither(true);
-        mPaint.setColor(0xFFffffff);
+        mPaint.setColor(0xFF000000);
         mPaint.setStyle(Paint.Style.STROKE);
         mPaint.setStrokeJoin(Paint.Join.ROUND);
         mPaint.setStrokeCap(Paint.Cap.ROUND);
@@ -102,5 +103,49 @@ public class DrawOverView extends View {
         mBitmap.eraseColor(Color.TRANSPARENT);
         invalidate();
         System.gc();
+    }
+
+    public void setAttributes(int code){
+        switch (code){
+            case 0:
+                mPaint.setStyle(Paint.Style.STROKE);
+                mPaint.setStrokeJoin(Paint.Join.ROUND);
+                mPaint.setStrokeCap(Paint.Cap.ROUND);
+                mPaint.setColor(0xFF000000);
+                mPaint.setStrokeWidth(15);
+                break;
+            case 1:
+                mPaint.setStyle(Paint.Style.STROKE);
+                mPaint.setStrokeJoin(Paint.Join.ROUND);
+                mPaint.setStrokeCap(Paint.Cap.ROUND);
+                mPaint.setColor(0xFF4286f4);
+                mPaint.setStrokeWidth(15);
+                break;
+            case 2:
+                mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+                mPaint.setStrokeJoin(Paint.Join.ROUND);
+                mPaint.setStrokeCap(Paint.Cap.ROUND);
+                mPaint.setColor(0xFFffffff);
+                mPaint.setStrokeWidth(10);
+                break;
+            case 3:
+                mPaint.setStyle(Paint.Style.STROKE);
+                mPaint.setStrokeJoin(Paint.Join.ROUND);
+                mPaint.setStrokeCap(Paint.Cap.ROUND);
+                mPaint.setColor(0xFF000000);
+                mPaint.setPathEffect(new DashPathEffect(new float[]{10.0f,20.0f},0.0f));
+                mPaint.setStrokeWidth(15);
+                break;
+            case 4:
+                mPaint.setStyle(Paint.Style.STROKE);
+                mPaint.setStrokeJoin(Paint.Join.ROUND);
+                mPaint.setStrokeCap(Paint.Cap.ROUND);
+                mPaint.setColor(0xFFc8cace);
+                mPaint.setStrokeWidth(15);
+                break;
+            default:
+                break;
+        }
+
     }
 }

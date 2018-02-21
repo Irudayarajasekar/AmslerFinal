@@ -27,6 +27,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.StringTokenizer;
 
 import Utils.DrawOverView;
 
@@ -42,10 +43,11 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     Button yes,no,closeins,done;
     ImageView chart1,chart2;
     int position,currentposition;
-    String[] questionslist;
+    String[] questionslist,codeArray;
     boolean isComplete,isFirstIns=true,isdefect=false;
     String instruction;
     Intent intent,reportintent;
+    ArrayList<Integer> arrayList;
     DrawOverView drawOverView1,drawOverView2;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -101,6 +103,13 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
             reportintent.putExtra("lefteyereport",getIntent().getByteArrayExtra("lefteyereport"));
         else if(getIntent().hasExtra("righteyereport"))
             reportintent.putExtra("righteyereport",getIntent().getByteArrayExtra("righteyereport"));
+        codeArray = getResources().getStringArray(R.array.codes);
+        String currentCode = codeArray[position-1];
+        arrayList = new ArrayList<>();
+        StringTokenizer stringTokenizer = new StringTokenizer(currentCode,"|");
+        while (stringTokenizer.hasMoreTokens()){
+            arrayList.add(Integer.parseInt(stringTokenizer.nextToken()));
+        }
     }
 
     @Override
@@ -206,10 +215,14 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                 else{
                     isdefect = true;
                     question.setText(R.string.mark);
-                    if(!isComplete)
+                    if(!isComplete) {
+                        drawOverView1.setAttributes(arrayList.get(currentposition));
                         drawOverView1.setVisibility(View.VISIBLE);
-                    else
+                    }
+                    else {
+                        drawOverView2.setAttributes(arrayList.get(currentposition));
                         drawOverView2.setVisibility(View.VISIBLE);
+                    }
                     buttonlayout.setVisibility(View.INVISIBLE);
                     done.setVisibility(View.VISIBLE);
                 }

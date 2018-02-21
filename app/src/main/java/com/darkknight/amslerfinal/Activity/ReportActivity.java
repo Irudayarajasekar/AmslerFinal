@@ -69,7 +69,7 @@ public class ReportActivity extends AppCompatActivity {
             public void onClick(View view) {
                 for (int i=0;i<2;i++){
                     String filename = imageNameArray[i];
-                    filename+= "_"+name+".png";
+                    filename+= "_"+name+"_"+DateFormat.getTimeInstance().format(new Date())+".png";
                     generateReport(filename,imageArray[i]);
                 }
                 Snackbar.make(view,R.string.success,Snackbar.LENGTH_SHORT).show();
