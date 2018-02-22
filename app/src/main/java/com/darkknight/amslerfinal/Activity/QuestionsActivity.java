@@ -159,6 +159,8 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                 }
                 else{
                     if(isComplete) {
+                        if(!isdefect)
+                            isdefect = drawOverView2.isdefect;
                         drawOverView2.setVisibility(View.VISIBLE);
                         drawLayout2.setDrawingCacheEnabled(true);
                         Bitmap b = drawLayout2.getDrawingCache();
@@ -177,6 +179,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                     }
                     else{
                         isComplete = true;
+                        isdefect = drawOverView1.isdefect;
                         drawOverView1.setVisibility(View.VISIBLE);
                         drawLayout1.setDrawingCacheEnabled(true);
                         Bitmap b = drawLayout1.getDrawingCache();
@@ -213,7 +216,6 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                     }
                 }
                 else{
-                    isdefect = true;
                     question.setText(R.string.mark);
                     if(!isComplete) {
                         drawOverView1.setAttributes(arrayList.get(currentposition));
@@ -242,6 +244,8 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                         drawOverView2.setVisibility(View.INVISIBLE);
                 }else{
                     if(isComplete) {
+                        if(!isdefect)
+                            isdefect = drawOverView2.isdefect;
                         drawOverView2.setVisibility(View.VISIBLE);
                         drawLayout2.setDrawingCacheEnabled(true);
                         Bitmap b = drawLayout2.getDrawingCache();
@@ -260,6 +264,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                     }
                     else{
                         isComplete = true;
+                        isdefect = drawOverView1.isdefect;
                         drawOverView1.setVisibility(View.VISIBLE);
                         drawLayout1.setDrawingCacheEnabled(true);
                         Bitmap b = drawLayout1.getDrawingCache();

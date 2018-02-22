@@ -77,14 +77,24 @@
         <item>Are there any "holes" (missing areas) or dark areas in the grid?</item>
         <item>Are any corners and sides of the grid invisible?(while keeping your eye on the central dot)</item>
     </string-array>
-    <string-array name="chart5">
+    <string-array name="chart5a">
         <item>Always keep your eye focused on the dot in the centre of the grid</item>
-        <item>Do any of the horizontal (---) or vertical (|) lines in the grid appear wavy, blurred or distorted?</item>
+        <item>Do any of the vertical (|) lines in the grid appear wavy, blurred or distorted?</item>
         <item>Are any corners and sides of the grid invisible?(while keeping your eye on the central dot)</item>
     </string-array>
-    <string-array name="chart6">
+    <string-array name="chart5b">
         <item>Always keep your eye focused on the dot in the centre of the grid</item>
-        <item>Do any of the horizontal (---) or vertical (|) lines in the grid appear wavy, blurred or distorted?</item>
+        <item>Do any of the horizontal (---) lines in the grid appear wavy, blurred or distorted?</item>
+        <item>Are any corners and sides of the grid invisible?(while keeping your eye on the central dot)</item>
+    </string-array>
+    <string-array name="chart6a">
+        <item>Always keep your eye focused on the dot in the centre of the grid</item>
+        <item>Do any of the vertical (|) lines in the grid appear wavy, blurred or distorted?</item>
+        <item>Are any corners and sides of the grid invisible?(while keeping your eye on the central dot)</item>
+    </string-array>
+    <string-array name="chart6b">
+        <item>Always keep your eye focused on the dot in the centre of the grid</item>
+        <item>Do any of the horizontal (---) lines in the grid appear wavy, blurred or distorted?</item>
         <item>Are any corners and sides of the grid invisible?(while keeping your eye on the central dot)</item>
     </string-array>
     <string-array name="chart7">
@@ -96,7 +106,7 @@
     <string-array name="codes">
         <item>6|5|0|1|2|3</item>
         <item>6|4|0|1|2|3</item>
-        <item>6|4|0|2</item>
+        <item>6|4|1|2</item>
         <item>6|2|3</item>
         <item>6|0|3</item>
         <item>6|0|3</item>

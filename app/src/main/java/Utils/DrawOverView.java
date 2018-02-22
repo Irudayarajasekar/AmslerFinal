@@ -20,6 +20,7 @@ public class DrawOverView extends View {
     private Path mPath;
     private Paint   mBitmapPaint;
     private Paint mPaint;
+    public boolean isdefect;
 
     public DrawOverView(Context c) {
         super(c);
@@ -47,7 +48,6 @@ public class DrawOverView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         canvas.drawBitmap(mBitmap, 0, 0, mBitmapPaint);
-
         canvas.drawPath(mPath, mPaint);
     }
 
@@ -59,6 +59,7 @@ public class DrawOverView extends View {
         mPath.moveTo(x, y);
         mX = x;
         mY = y;
+        isdefect = true;
     }
     private void touch_move(float x, float y) {
         float dx = Math.abs(x - mX);

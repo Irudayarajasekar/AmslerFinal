@@ -48,8 +48,8 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     TextView title;
     int[] imageArray = {R.drawable.chart1,R.drawable.chart2,R.drawable.chart3,
             R.drawable.chart4,R.drawable.chart5a,R.drawable.chart5b,R.drawable.chart6a,R.drawable.chart6b,R.drawable.chart7};
-    int[] chartnames = {R.array.chart1,R.array.chart2,R.array.chart3,R.array.chart4,R.array.chart5,R.array.chart5,
-            R.array.chart6,R.array.chart6,R.array.chart7};
+    int[] chartnames = {R.array.chart1,R.array.chart2,R.array.chart3,R.array.chart4,R.array.chart5a,R.array.chart5b,
+            R.array.chart6a,R.array.chart6b,R.array.chart7};
     String[] nameArray;
 
     @Override
