@@ -110,10 +110,19 @@ public class ReportActivity extends AppCompatActivity {
             View page = inflater.inflate(R.layout.reportcontent, null);
             ((TextView)page.findViewById(R.id.textview1)).setText(titleArray[position]);
             ((ImageView)page.findViewById(R.id.imageview)).setImageBitmap(imageArray[position]);
-            if(getIntent().getBooleanExtra("isdefect",false)){
-                ((TextView)page.findViewById(R.id.instructiontext)).setText(R.string.defect);
-            }else {
-                ((TextView)page.findViewById(R.id.instructiontext)).setText(R.string.nodefect);
+            if(position == 0) {
+                if (getIntent().getBooleanExtra("isdefectleft", false)) {
+                    ((TextView) page.findViewById(R.id.instructiontext)).setText(R.string.defect);
+                } else {
+                    ((TextView) page.findViewById(R.id.instructiontext)).setText(R.string.nodefect);
+                }
+            }
+            if (position == 1){
+                if (getIntent().getBooleanExtra("isdefectright", false)) {
+                    ((TextView) page.findViewById(R.id.instructiontext)).setText(R.string.defect);
+                } else {
+                    ((TextView) page.findViewById(R.id.instructiontext)).setText(R.string.nodefect);
+                }
             }
             ((ViewPager) container).addView(page, 0);
             return page;

@@ -44,7 +44,7 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
     ImageView chart1,chart2;
     int position,currentposition;
     String[] questionslist,codeArray;
-    boolean isComplete,isFirstIns=true,isdefect=false;
+    boolean isComplete,isFirstIns=true,isdefect=false,isdefectleft=false,isdefectright=false,isfromchart1=false;
     String instruction;
     Intent intent,reportintent;
     ArrayList<Integer> arrayList;
@@ -64,6 +64,9 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
         drawOverView2.setVisibility(View.INVISIBLE);
         isComplete = getIntent().getBooleanExtra("iscomplete",false);
         isdefect = getIntent().getBooleanExtra("isdefect",false);
+        isdefectleft = getIntent().getBooleanExtra("isdefectleft",false);
+        isdefectright = getIntent().getBooleanExtra("isdefectright",false);
+        isfromchart1 = getIntent().getBooleanExtra("isfromchart1",false);
         if(!isComplete) {
             drawLayout1.setVisibility(View.VISIBLE);
             drawLayout2.setVisibility(View.INVISIBLE);
@@ -136,7 +139,10 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                     intent.putExtra("chartnumber",R.array.chart2);
                     intent.putExtra("chartimage",R.drawable.chart2);
                     intent.putExtra("isdefect",isdefect);
+                    intent.putExtra("isdefectleft",isdefectleft);
+                    intent.putExtra("isdefectright",isdefectright);
                     if(isComplete) {
+                        intent.putExtra("isfromchart1",true);
                         intent.putExtra("iscomplete", true);
                         if(getIntent().getIntExtra("eyeside",R.string.righteyeside) == R.string.lefteyeside)
                             intent.putExtra("eyeside", R.string.righteyeside);
@@ -161,6 +167,17 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                     if(isComplete) {
                         if(!isdefect)
                             isdefect = drawOverView2.isdefect;
+                        if(isfromchart1) {
+                            if (getIntent().getIntExtra("eyeside", R.string.righteyeside) == R.string.lefteyeside)
+                                isdefectleft = drawOverView2.isdefect;
+                            else
+                                isdefectright = drawOverView2.isdefect;
+                        }else{
+                            if (getIntent().getIntExtra("eyeside", R.string.righteyeside) == R.string.lefteyeside)
+                                isdefectright = drawOverView2.isdefect;
+                            else
+                                isdefectleft = drawOverView2.isdefect;
+                        }
                         drawOverView2.setVisibility(View.VISIBLE);
                         drawLayout2.setDrawingCacheEnabled(true);
                         Bitmap b = drawLayout2.getDrawingCache();
@@ -175,11 +192,17 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                             reportintent.putExtra("lefteyereport",byteArrayOutputStream.toByteArray());
                         }
                         reportintent.putExtra("isdefect",isdefect);
+                        reportintent.putExtra("isdefectleft",isdefectleft);
+                        reportintent.putExtra("isdefectright",isdefectright);
                         startActivity(reportintent);
                     }
                     else{
                         isComplete = true;
                         isdefect = drawOverView1.isdefect;
+                        if(getIntent().getIntExtra("eyeside",R.string.righteyeside) == R.string.lefteyeside)
+                            isdefectleft = drawOverView1.isdefect;
+                        else
+                            isdefectright = drawOverView1.isdefect;
                         drawOverView1.setVisibility(View.VISIBLE);
                         drawLayout1.setDrawingCacheEnabled(true);
                         Bitmap b = drawLayout1.getDrawingCache();
@@ -246,6 +269,17 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                     if(isComplete) {
                         if(!isdefect)
                             isdefect = drawOverView2.isdefect;
+                        if(isfromchart1) {
+                            if (getIntent().getIntExtra("eyeside", R.string.righteyeside) == R.string.lefteyeside)
+                                isdefectleft = drawOverView2.isdefect;
+                            else
+                                isdefectright = drawOverView2.isdefect;
+                        }else{
+                            if (getIntent().getIntExtra("eyeside", R.string.righteyeside) == R.string.lefteyeside)
+                                isdefectright = drawOverView2.isdefect;
+                            else
+                                isdefectleft = drawOverView2.isdefect;
+                        }
                         drawOverView2.setVisibility(View.VISIBLE);
                         drawLayout2.setDrawingCacheEnabled(true);
                         Bitmap b = drawLayout2.getDrawingCache();
@@ -260,11 +294,17 @@ public class QuestionsActivity extends AppCompatActivity implements View.OnClick
                             reportintent.putExtra("lefteyereport",byteArrayOutputStream.toByteArray());
                         }
                         reportintent.putExtra("isdefect",isdefect);
+                        reportintent.putExtra("isdefectleft",isdefectleft);
+                        reportintent.putExtra("isdefectright",isdefectright);
                         startActivity(reportintent);
                     }
                     else{
                         isComplete = true;
                         isdefect = drawOverView1.isdefect;
+                        if(getIntent().getIntExtra("eyeside",R.string.righteyeside) == R.string.lefteyeside)
+                            isdefectleft = drawOverView1.isdefect;
+                        else
+                            isdefectright = drawOverView1.isdefect;
                         drawOverView1.setVisibility(View.VISIBLE);
                         drawLayout1.setDrawingCacheEnabled(true);
                         Bitmap b = drawLayout1.getDrawingCache();
