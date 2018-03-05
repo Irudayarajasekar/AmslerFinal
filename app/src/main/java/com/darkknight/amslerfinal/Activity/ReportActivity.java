@@ -38,11 +38,12 @@ public class ReportActivity extends AppCompatActivity {
     ViewPager vp;
     Button generate;
     Bitmap[] imageArray;
-    String name;
+    String name,place,age,sex;
     int[] titleArray= {R.string.lefteyereport,R.string.righteyereport};
     String[] imageNameArray = {"lefteyereport","righteyereport"};
     public static final String MyPREFERENCES = "AppPreferences" ;
     SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,6 +51,9 @@ public class ReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_report);
         sharedPreferences = getSharedPreferences(MyPREFERENCES,MODE_PRIVATE);
         name = sharedPreferences.getString("nameofpatient","default");
+        age = sharedPreferences.getString("ageofpatient","");
+        place = sharedPreferences.getString("placeofpatient","");
+        sex = sharedPreferences.getString("sexofpatient","");
         imageArray = new Bitmap[2];
         Bitmap image = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("lefteyereport"),0,
                 getIntent().getByteArrayExtra("lefteyereport").length);
@@ -69,10 +73,16 @@ public class ReportActivity extends AppCompatActivity {
             public void onClick(View view) {
                 for (int i=0;i<2;i++){
                     String filename = imageNameArray[i];
-                    filename+= "_"+name+"_"+DateFormat.getTimeInstance().format(new Date())+".png";
+                    filename+= "_"+name+"_"+age+"_"+sex+"_"+place+"_"+DateFormat.getTimeInstance().format(new Date())+".png";
                     generateReport(filename,imageArray[i]);
                 }
                 Snackbar.make(view,R.string.success,Snackbar.LENGTH_SHORT).show();
+                editor = sharedPreferences.edit();
+                editor.putString("nameofpatient","");
+                editor.putString("ageofpatient","");
+                editor.putString("placeofpatient","");
+                editor.putString("sexofpatient","");
+                editor.commit();
             }
         });
     }

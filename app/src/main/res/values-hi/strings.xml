@@ -26,6 +26,11 @@
     <string name="success">रिपोर्ट फोन भंडारण में संग्रहीत</string>
     <string name="entername">अपना नाम दर्ज करें</string>
     <string name="nameok">ठीक</string>
+    <string name="radio_male">पुस्र्ष</string>
+    <string name="radio_female">महिला</string>
+    <string name="age">आयु</string>
+    <string name="sex">लिंग</string>
+    <string name="place">स्थान</string>
     <string-array name="instructions">
         <item>एम्सलर ग्रिड के साथ अपनी आंखों का परीक्षण करना आसान है और केवल कुछ मिनट लगते हैं। यहां बुनियादी कदम हैं</item>
         <item>पढ़ने के लिए इस्तेमाल सामान्य कमरे प्रकाश के तहत अपनी आँखों का परीक्षण करें</item>

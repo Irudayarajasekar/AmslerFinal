@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.FrameLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -36,9 +38,11 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     ListDetails listDetails;
     DividerItemDecoration dividerItemDecoration;
     RelativeLayout mainLayout;
-    FrameLayout eyeframe,nameframe;
-    Button name;
-    EditText nameofpatient;
+    FrameLayout eyeframe,nameframe,nameclinicframe;
+    Button name,nameclinic;
+    RadioGroup radiosex;
+    RadioButton selectedsex;
+    EditText nameofpatient,nameofpatientclinic,ageofpatientclinic,placeofpatientclinic;
     CardView lefteye,righteye;
     int chartnumber;
     public static final String MyPREFERENCES = "AppPreferences" ;
@@ -60,11 +64,18 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         mainLayout = (RelativeLayout)findViewById(R.id.mainLayout);
         eyeframe = (FrameLayout)findViewById(R.id.eyeframe);
         nameframe = (FrameLayout)findViewById(R.id.nameframe);
+        nameclinicframe = (FrameLayout)findViewById(R.id.nameclinicframe);
         lefteye = (CardView)findViewById(R.id.lefteye);
         righteye = (CardView)findViewById(R.id.righteye);
         name = (Button)findViewById(R.id.nameok);
+        nameclinic = (Button)findViewById(R.id.nameclinicok);
         nameofpatient = (EditText)findViewById(R.id.nameofpatient);
+        nameofpatientclinic = (EditText)findViewById(R.id.nameofpatientclinic);
+        ageofpatientclinic = (EditText)findViewById(R.id.ageofpatientclinic);
+        placeofpatientclinic = (EditText)findViewById(R.id.placeofpatientclinic);
+        radiosex = (RadioGroup)findViewById(R.id.radioSex);
         name.setOnClickListener(this);
+        nameclinic.setOnClickListener(this);
         lefteye.setOnClickListener(this);
         righteye.setOnClickListener(this);
         title.setText(getIntent().getIntExtra("title",R.string.homeamsler));
@@ -87,7 +98,11 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
             @Override
             public void onItemClick(View view, int position) {
                 chartnumber = position;
-                nameframe.setVisibility(View.VISIBLE);
+                if(getIntent().getIntExtra("title",R.string.homeamsler) == R.string.homeamsler){
+                    nameframe.setVisibility(View.VISIBLE);
+                }else{
+                    nameclinicframe.setVisibility(View.VISIBLE);
+                }
                 mainLayout.setAlpha(0.3f);
             }
         }));
@@ -129,15 +144,40 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
                 }else{
                     Snackbar.make(view,"Please fill your name",Snackbar.LENGTH_SHORT).show();
                 }
+                break;
+            case R.id.nameclinicok:
+                if(!nameofpatientclinic.getText().toString().trim().isEmpty()||
+                        !ageofpatientclinic.getText().toString().trim().isEmpty()||
+                        !placeofpatientclinic.getText().toString().trim().isEmpty()){
+                    int selectedId = radiosex.getCheckedRadioButtonId();
+                    selectedsex = (RadioButton) findViewById(selectedId);
+                    nameclinicframe.setVisibility(View.INVISIBLE);
+                    sharedPreferences = getSharedPreferences(MyPREFERENCES,MODE_PRIVATE);
+                    editor = sharedPreferences.edit();
+                    editor.putString("nameofpatient",nameofpatientclinic.getText().toString().trim());
+                    editor.putString("ageofpatient",ageofpatientclinic.getText().toString().trim());
+                    editor.putString("placeofpatient",placeofpatientclinic.getText().toString().trim());
+                    editor.putString("sexofpatient",selectedsex.getText().toString().trim());
+                    editor.commit();
+                    eyeframe.setVisibility(View.VISIBLE);
+                    nameofpatientclinic.setText("");
+                    ageofpatientclinic.setText("");
+                    placeofpatientclinic.setText("");
+                }else{
+                    Snackbar.make(view,"Please fill all fields",Snackbar.LENGTH_SHORT).show();
+                }
+                break;
             default:
                 break;
         }
     }
     @Override
     public void onBackPressed() {
-        if(eyeframe.getVisibility() == View.VISIBLE || nameframe.getVisibility() ==View.VISIBLE){
+        if(eyeframe.getVisibility() == View.VISIBLE || nameframe.getVisibility() ==View.VISIBLE ||
+                nameclinicframe.getVisibility() == View.VISIBLE){
             eyeframe.setVisibility(View.INVISIBLE);
             nameframe.setVisibility(View.INVISIBLE);
+            nameclinicframe.setVisibility(View.INVISIBLE);
             mainLayout.setAlpha(1.0f);
         }else{
             super.onBackPressed();
