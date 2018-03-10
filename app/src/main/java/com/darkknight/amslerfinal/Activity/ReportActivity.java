@@ -16,7 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.darkknight.amslerfinal.R;
@@ -38,7 +40,10 @@ public class ReportActivity extends AppCompatActivity {
     ViewPager vp;
     Button generate;
     Bitmap[] imageArray;
-    String name,place,age,sex;
+    String name,place,age,sex,uid;
+    RelativeLayout saveview;
+    TextView information;
+    ImageView saveimage;
     int[] titleArray= {R.string.lefteyereport,R.string.righteyereport};
     String[] imageNameArray = {"lefteyereport","righteyereport"};
     public static final String MyPREFERENCES = "AppPreferences" ;
@@ -49,11 +54,15 @@ public class ReportActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_report);
+        information = (TextView) findViewById(R.id.information);
+        saveimage = (ImageView)findViewById(R.id.saveimage);
+        saveview = (RelativeLayout)findViewById(R.id.saveview);
         sharedPreferences = getSharedPreferences(MyPREFERENCES,MODE_PRIVATE);
         name = sharedPreferences.getString("nameofpatient","default");
         age = sharedPreferences.getString("ageofpatient","");
         place = sharedPreferences.getString("placeofpatient","");
         sex = sharedPreferences.getString("sexofpatient","");
+        uid = sharedPreferences.getString("uidofpatient","");
         imageArray = new Bitmap[2];
         Bitmap image = BitmapFactory.decodeByteArray(getIntent().getByteArrayExtra("lefteyereport"),0,
                 getIntent().getByteArrayExtra("lefteyereport").length);
@@ -89,11 +98,28 @@ public class ReportActivity extends AppCompatActivity {
 
     public void generateReport(String filename,Bitmap bitmap){
         FileOutputStream out = null;
+        saveimage.setImageBitmap(bitmap);
+        String informationText = "Name : "+name;
+        if(uid.length()>0){
+            informationText+="\nUID: "+uid;
+        }
+        if(age.length()>0){
+            informationText+="\nAge: "+age;
+        }
+        if(sex.length()>0){
+            informationText+="\nSex: "+sex;
+        }
+        if(place.length()>0){
+            informationText+="\nPlace: "+place;
+        }
+        information.setText(informationText);
+        saveview.setDrawingCacheEnabled(true);
+        Bitmap b = saveview.getDrawingCache();
         File file=new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), filename);
         try {
             out = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
+            b.compress(Bitmap.CompressFormat.PNG, 100, out);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

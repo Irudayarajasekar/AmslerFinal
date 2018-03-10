@@ -31,6 +31,7 @@
     <string name="age">आयु</string>
     <string name="sex">लिंग</string>
     <string name="place">स्थान</string>
+    <string name="uid">UID</string>
     <string-array name="instructions">
         <item>एम्सलर ग्रिड के साथ अपनी आंखों का परीक्षण करना आसान है और केवल कुछ मिनट लगते हैं। यहां बुनियादी कदम हैं</item>
         <item>पढ़ने के लिए इस्तेमाल सामान्य कमरे प्रकाश के तहत अपनी आँखों का परीक्षण करें</item>
@@ -109,7 +110,7 @@
     </string-array>
     <string-array name="codes">
         <item>6|5|0|1|2|3</item>
-        <item>6|4|0|1|2|3</item>
+        <item>6|7|0|1|2|3</item>
         <item>6|4|1|2</item>
         <item>6|2|3</item>
         <item>6|0|3</item>

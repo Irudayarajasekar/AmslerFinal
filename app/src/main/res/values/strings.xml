@@ -18,11 +18,11 @@
     <string name="exmsg">Closing would terminate the test. Are you sure?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
-    <string name="generate">GENERATE REPORT</string>
+    <string name="generate">SAVE REPORT</string>
     <string name="lefteyereport">Left Eye Report</string>
     <string name="righteyereport">Right Eye Report</string>
-    <string name="defect">You may have central field defect. Please consult a doctor</string>
-    <string name="nodefect">You donot have any macular defect. Thanks for taking test</string>
+    <string name="defect">You may have central field defect. Please consult a doctor.  Thanks for taking test</string>
+    <string name="nodefect">You donot have any central visual field defect. Thanks for taking test</string>
     <string name="success">Report stored to the phone storage</string>
     <string name="entername">Please enter your name</string>
     <string name="nameok">OK</string>
@@ -31,6 +31,7 @@
     <string name="age">Age</string>
     <string name="sex">Sex</string>
     <string name="place">Place</string>
+    <string name="uid">UID</string>
     <string-array name="instructions">
         <item>Testing your eyes with an Amsler grid is easy and takes only a few minutes. Here are the basic steps</item>
         <item>Test your eyes under normal room lighting used for reading</item>
@@ -110,7 +111,7 @@
     </string-array>
     <string-array name="codes">
         <item>6|5|0|1|2|3</item>
-        <item>6|4|0|1|2|3</item>
+        <item>6|7|0|1|2|3</item>
         <item>6|4|1|2</item>
         <item>6|2|3</item>
         <item>6|0|3</item>

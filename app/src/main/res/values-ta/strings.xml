@@ -18,10 +18,10 @@
     <string name="yes">ஆம்</string>
     <string name="done">நிறைவு</string>
     <string name="no">இல்லை</string>
-    <string name="generate">அறிக்கை உருவாக்கு</string>
+    <string name="generate">அறிக்கை சேமிக்க</string>
     <string name="lefteyereport">இடது கண் அறிக்கை</string>
     <string name="righteyereport">வலது கண் அறிக்கை</string>
-    <string name="defect">உங்களுக்கு மத்திய குறைபாடு இருக்கலாம். தயவு செய்து மருத்துவரை அணுகவும்</string>
+    <string name="defect">உங்களுக்கு மத்திய குறைபாடு இருக்கலாம். தயவு செய்து மருத்துவரை அணுகவும். சோதனை எடுத்துக்கொண்டதற்கு நன்றி</string>
     <string name="nodefect">உங்களுக்கு குறைபாடுகள் இல்லை. சோதனை எடுத்துக்கொண்டதற்கு நன்றி</string>
     <string name="success">அறிக்கை வெற்றிகரமாக உருவாக்கப்பட்டது</string>
     <string name="entername">உங்களுடைய பெயரை பதிவு செய்யவும்</string>
@@ -31,6 +31,7 @@
     <string name="age">வயது</string>
     <string name="sex">பாலினம்</string>
     <string name="place">இடம்</string>
+    <string name="uid">உ.எண்</string>
     <string-array name="instructions">
         <item>ஆம்ஸ்லர் கிரிட் டெஸ்ட் மூலமாக கண்ணை பரிசோதிப்பது எளிது. ஆனால் அதற்கு சில நிமிடங்கள் ஆகும். வழிமுறைகளை கீழே பார்ப்போம்</item>
         <item>சாதாரண வெளிச்சத்தி்ல் படிக்கும் போது உங்கள் கண்ணை பரிசோதித்து பாருங்கள்</item>
@@ -118,7 +119,7 @@
     </string-array>
     <string-array name="codes">
         <item>6|5|0|1|2|3</item>
-        <item>6|4|0|1|2|3</item>
+        <item>6|7|0|1|2|3</item>
         <item>6|4|1|2</item>
         <item>6|2|3</item>
         <item>6|0|3</item>

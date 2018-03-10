@@ -42,7 +42,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
     Button name,nameclinic;
     RadioGroup radiosex;
     RadioButton selectedsex;
-    EditText nameofpatient,nameofpatientclinic,ageofpatientclinic,placeofpatientclinic;
+    EditText nameofpatient,nameofpatientclinic,ageofpatientclinic,placeofpatientclinic,uidofpatientclinic;
     CardView lefteye,righteye;
     int chartnumber;
     public static final String MyPREFERENCES = "AppPreferences" ;
@@ -73,6 +73,7 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
         nameofpatientclinic = (EditText)findViewById(R.id.nameofpatientclinic);
         ageofpatientclinic = (EditText)findViewById(R.id.ageofpatientclinic);
         placeofpatientclinic = (EditText)findViewById(R.id.placeofpatientclinic);
+        uidofpatientclinic = (EditText)findViewById(R.id.uidofpatientclinic);
         radiosex = (RadioGroup)findViewById(R.id.radioSex);
         name.setOnClickListener(this);
         nameclinic.setOnClickListener(this);
@@ -148,7 +149,8 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.nameclinicok:
                 if(!nameofpatientclinic.getText().toString().trim().isEmpty()||
                         !ageofpatientclinic.getText().toString().trim().isEmpty()||
-                        !placeofpatientclinic.getText().toString().trim().isEmpty()){
+                        !placeofpatientclinic.getText().toString().trim().isEmpty()||
+                        !uidofpatientclinic.getText().toString().trim().isEmpty()){
                     int selectedId = radiosex.getCheckedRadioButtonId();
                     selectedsex = (RadioButton) findViewById(selectedId);
                     nameclinicframe.setVisibility(View.INVISIBLE);
@@ -158,11 +160,13 @@ public class ListActivity extends AppCompatActivity implements View.OnClickListe
                     editor.putString("ageofpatient",ageofpatientclinic.getText().toString().trim());
                     editor.putString("placeofpatient",placeofpatientclinic.getText().toString().trim());
                     editor.putString("sexofpatient",selectedsex.getText().toString().trim());
+                    editor.putString("uidofpatient",uidofpatientclinic.getText().toString().trim());
                     editor.commit();
                     eyeframe.setVisibility(View.VISIBLE);
                     nameofpatientclinic.setText("");
                     ageofpatientclinic.setText("");
                     placeofpatientclinic.setText("");
+                    uidofpatientclinic.setText("");
                 }else{
                     Snackbar.make(view,"Please fill all fields",Snackbar.LENGTH_SHORT).show();
                 }

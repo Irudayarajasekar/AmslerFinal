@@ -144,6 +144,13 @@ public class DrawOverView extends View {
                 mPaint.setColor(0xFFc8cace);
                 mPaint.setStrokeWidth(15);
                 break;
+            case 7:
+                mPaint.setStyle(Paint.Style.STROKE);
+                mPaint.setStrokeJoin(Paint.Join.ROUND);
+                mPaint.setStrokeCap(Paint.Cap.ROUND);
+                mPaint.setColor(0xFFff0000);
+                mPaint.setStrokeWidth(15);
+                break;
             default:
                 break;
         }
